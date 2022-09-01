@@ -1,0 +1,68 @@
+#board-generation {
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	
+	width: 310px;
+	height: 514px;
+	
+	border: 2px solid #000;
+	
+}
+
+#board {
+	
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	
+}
+
+.area {
+	
+	display: grid;
+	grid-template-columns: auto auto auto auto auto auto auto auto auto;
+	
+	width: 288px;
+	height: 156px;
+	
+	border: 1px solid #000;
+	
+	margin: 10px;
+	
+}
+
+.area div{
+	
+	width: 30px;
+	height: 50px;
+	
+	
+	text-align: center;
+	line-height: 50px;
+	font-size: 25px;
+	font-weight: 600;
+	font-family: Arial, Helvetica, sans-serif;
+
+	border: 1px solid #000;
+	
+}
+
+.unticked {
+	
+	cursor: cell;
+	user-select: none;
+	
+}
+
+.ticked {
+	
+	color: #1fed3e;
+	
+	cursor: cell;
+	user-select: none;
+	
+}
