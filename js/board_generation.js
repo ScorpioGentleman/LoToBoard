@@ -103,10 +103,11 @@ function selectNumbers() {
 }
 
 function htmlTextGeneration(arr, color) {
+	// a area will include 3 rows so count_flag variable will be used to split rows to areas
 	var count_flag = 0;
-
+	
 	var html_text = "";
-
+	
 	for(i = 0; i < arr.length; i++) {
 		
 		if(count_flag == 0) {
@@ -114,17 +115,27 @@ function htmlTextGeneration(arr, color) {
 		}
 		
 		for(j = 0; j < arr[i].length; j++) {
-			html_text += "<div "
+			html_text += "<div class=\"cell\" "
 			if(arr[i][j] == 0) {
 				html_text += "style=\"background:" + color + "\">";
 			} else {
+				html_text += "><div ";
 				html_text += "id=\"" + (i * 10 + j) + "\" "
 				if(ticked_cell[i][j]) {
 					html_text += "class=\"ticked\" ";
+					var red_or_green_color; 
+					if(arr[i][j] < 46) {
+						red_or_green_color = "#f55182";
+					} else {
+						red_or_green_color = "#40ad42";
+					}
+					html_text += "style=\"border-color:" + red_or_green_color + "; color:" + red_or_green_color + "\" ";
+					
 				} else {
 					html_text += "class=\"unticked\" ";
 				}
 				html_text += "onClick=\"tick(this.id)\">" + arr[i][j];
+				html_text += "</div>";
 			}
 			html_text += "</div>";
 		}
@@ -148,10 +159,14 @@ function randomColor() {
 var bgcolor = randomColor();
 
 function tick(row_and_col){
+	// get row of cell in array
 	var row = Math.floor(row_and_col / 10);
+	// get collumn of cell in array
 	var col = row_and_col % 10;
-	console.log(row_and_col);
+	
+	// change value of variable from True to False and from False to True
 	ticked_cell[row][col] = !ticked_cell[row][col];
+	// Re-update LoTo 
 	document.getElementById("board").innerHTML = htmlTextGeneration(arr_board, bgcolor);
 }
 
